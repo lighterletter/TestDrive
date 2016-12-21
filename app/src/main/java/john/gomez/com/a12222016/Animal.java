@@ -1,8 +1,6 @@
 package john.gomez.com.a12222016;
 
-/**
- * Created by john on 12/21/16.
- */
+
 public class Animal {
     private String name;
     private String textColor;

@@ -2,12 +2,8 @@ package john.gomez.com.a12222016;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-
 import java.util.List;
 
-/**
- * Created by john on 12/21/16.
- */
 public class AnimalAdapter extends RecyclerView.Adapter<AnimalViewHolder> {
     List<Animal> animals;
 

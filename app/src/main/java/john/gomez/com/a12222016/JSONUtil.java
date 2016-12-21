@@ -1,10 +1,5 @@
 package john.gomez.com.a12222016;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
