@@ -11,6 +11,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,33 +24,32 @@ public class MainActivity extends AppCompatActivity {
         makeNetworkCall();
     }
 
-    public void makeNetworkCall(){
+    public void makeNetworkCall() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://jsjrobotics.nyc/")
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         APIService service = retrofit.create(APIService.class);
-        Call<ResponseBody> call = service.getResponse();
+        Call<JSONUtil> call = service.getResponse();
 
-        call.enqueue(new Callback<ResponseBody>() {
+        call.enqueue(new Callback<JSONUtil>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<JSONUtil> call, Response<JSONUtil> response) {
 
-                if (response.isSuccessful()){
-                    try {
-                        Log.d("retrofit", "onResponse: "+ response.body().string());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                if (response.isSuccessful()) {
+                    JSONUtil responseBody = response.body();
+                    int size = responseBody.getAnimals().size();
+                    Log.d(TAG, "onResponse: " + size);
                 }
-
 
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<JSONUtil> call, Throwable t) {
 
             }
         });
     }
+
 }

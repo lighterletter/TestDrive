@@ -11,5 +11,5 @@ import retrofit2.http.GET;
 public interface APIService {
 
     @GET("cgi-bin/12_21_2016_exam.pl")
-    Call<ResponseBody> getResponse();
+    Call<JSONUtil> getResponse();
 }
