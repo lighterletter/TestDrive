@@ -27,15 +27,18 @@ public class AnimalViewHolder extends RecyclerView.ViewHolder {
     public void bind(final Animal animal){
 
         textView.setText(animal.getName());
-        textView.setTextColor(Color.parseColor(animal.getTextColor().toUpperCase()));
 
-        root.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                view.setBackgroundColor(Color.parseColor(animal.getBackground().toUpperCase()));
-            }
-        });
-
+        try {
+            textView.setTextColor(Color.parseColor(animal.getTextColor().toUpperCase()));
+            root.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    view.setBackgroundColor(Color.parseColor(animal.getBackground().toUpperCase()));
+                }
+            });
+        } catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
     }
 
 }
